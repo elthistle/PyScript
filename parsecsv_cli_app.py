@@ -17,19 +17,26 @@ class CLIApp(object):
             print "{0}; {1}".format(fname, self.parseMyFile(fullname))
 
     def parseMyFile(self, fname):
+    	col_reactionTime = 126
+    	col_trialName = 98
+    	col_isCorrect = 110 # fix tis one with correct column coord
+    	
         output = []
         fh = open(fname, 'rb')
 	csvshechka = csv.reader(fh)
         for row in csvshechka:
             chislo = 0
             try:
-                chislo = int(row[126])
+                chislo = int(row[col_reactionTime])
             except:
                 pass
             if chislo > 0:
-                if 'S' in row[98]:
+                if 'S' in row[col_trialName]:
                     chislo += 300
-                output.append(str(chislo))
+                cellText = str(chislo)
+                if '0' in row[col_isCorrect]:
+                    cellText = ' '
+                output.append(cellText)
         fh.close()
         return "; ".join(output)
 
