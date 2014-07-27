@@ -26,7 +26,7 @@ def theApp():
             # WARNING: if your .csv contains text entries (like headers) handle them here
             reaction_time = int(row[column_reaction_time]) # here we get the raw RT as a number
             # altering of RT should hppen here
-            cell_text = str(chislo) # saving the RT as text for output
+            cell_text = str(reaction_time) # saving the RT as text for output
             if '0' in row[column_correct_response]: # describe what happens if response is wrong below
                 cellText = ' ' # replace reaction time value with nothing (write empty cell)
                 
